@@ -1,0 +1,56 @@
+package webapp.listener;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+
+/**
+ * Application Lifecycle Listener implementation class MyListener
+ *
+ */
+public class MyListener implements ServletContextListener {
+	static Log log = LogFactory.getLog(MyListener.class);
+    /**
+     * Default constructor. 
+     */
+    public MyListener() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
+     */
+    public void contextDestroyed(ServletContextEvent arg0)  { 
+         // TODO Auto-generated method stub
+    	log.info("#######################################################");
+    	log.info("contextDestroyed");
+    	log.info("#######################################################");
+    }
+
+	/**
+     * @see ServletContextListener#contextInitialized(ServletContextEvent)
+     */
+    public void contextInitialized(ServletContextEvent arg0)  {
+    	log.info("#######################################################");
+    	log.info("contextInitialized");
+    	log.info("#######################################################");
+    	ServletContext application = arg0.getServletContext();
+    	
+    	String className = application.getInitParameter("className");
+    	String url = application.getInitParameter("url");
+    	String user = application.getInitParameter("user");
+    	String password = application.getInitParameter("password");
+    	String contextConfigLocation = application.getInitParameter("contextConfigLocation");
+    	log.info("className : " + className);
+    	log.info("url : " + url);
+    	log.info("user: " + user);
+    	log.info("password: " + password);
+    	log.info("contextConfigLocation : " + contextConfigLocation);
+    }
+	
+}
