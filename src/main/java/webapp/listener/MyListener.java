@@ -25,7 +25,7 @@ public class MyListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
-    public void contextDestroyed(ServletContextEvent arg0)  { 
+    public void contextDestroyed(ServletContextEvent sce)  { 
          // TODO Auto-generated method stub
     	log.info("#######################################################");
     	log.info("contextDestroyed");
@@ -35,11 +35,11 @@ public class MyListener implements ServletContextListener {
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
-    public void contextInitialized(ServletContextEvent arg0)  {
+    public void contextInitialized(ServletContextEvent sce)  {
     	log.info("#######################################################");
     	log.info("contextInitialized");
     	log.info("#######################################################");
-    	ServletContext application = arg0.getServletContext();
+    	ServletContext application = sce.getServletContext();
     	
     	String className = application.getInitParameter("className");
     	String url = application.getInitParameter("url");
